@@ -11,7 +11,6 @@ from .serializers import RegisterSerializer, LoginSerializer
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register(request):
-    """Register a new user with name, email, and password."""
     serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.save()

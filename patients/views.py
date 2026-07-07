@@ -7,25 +7,16 @@ from .serializers import PatientSerializer
 
 
 class PatientViewSet(viewsets.ModelViewSet):
-    """
-    ViewSet for managing patient records.
-    
-    - Users can only see and manage patients they created.
-    - All endpoints require JWT authentication.
-    """
     serializer_class = PatientSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        """Return only patients created by the authenticated user."""
         return Patient.objects.filter(created_by=self.request.user)
 
     def perform_create(self, serializer):
-        """Automatically set the created_by field to the current user."""
         serializer.save(created_by=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
-        """Get details of a specific patient."""
         try:
             instance = self.get_object()
             serializer = self.get_serializer(instance)
@@ -37,7 +28,6 @@ class PatientViewSet(viewsets.ModelViewSet):
             )
 
     def destroy(self, request, *args, **kwargs):
-        """Delete a patient and return confirmation."""
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response(

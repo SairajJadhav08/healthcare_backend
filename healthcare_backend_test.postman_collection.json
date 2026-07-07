@@ -1,0 +1,402 @@
+{
+  "info": {
+    "_postman_id": "b6e8f594-41f1-48bd-ada6-bceaadf95483",
+    "name": "healthcare_backend_test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49023665",
+    "_collection_link": "https://go.postman.co/collection/49023665-b6e8f594-41f1-48bd-ada6-bceaadf95483?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "register_and_login",
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"rahul@example.com\",\r\n    \"password\": \"Password@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/api/auth/login/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Rahul Sharma\",\r\n    \"email\": \"rahul@example.com\",\r\n    \"password\": \"Password@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/api/auth/register/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Patients",
+      "item": [
+        {
+          "name": "creatpatient",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0wg3}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Sairaj Jadhav\",\r\n    \"age\": 30,\r\n    \"gender\": \"Male\",\r\n    \"phone\": \"9876543210\",\r\n    \"address\": \"Pune\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/api/patients/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "patients",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getPatients",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authorization_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/api/patients/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "patients",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get_patientByid",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authorization_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/api/patients/2/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "patients",
+                "2",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update_patient",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authorization_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Shah Runkh Khan\",\r\n    \"age\":15,\r\n    \"gender\":\"Male\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/api/patients/2/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "patients",
+                "2",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete_patient",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authorization_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/api/patients/2/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "patients",
+                "2",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Doctors",
+      "item": [
+        {
+          "name": "create Doctore",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{Doctors Token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Dr. Rahul Sharma\",\r\n    \"specialization\": \"Cardiologist\",\r\n    \"phone\": \"9876543211\",\r\n    \"email\": \"rahul@example.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/api/doctors/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "doctors",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get_doctors",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{Doctors Token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Dr. Rahul Sharma\",\r\n    \"specialization\": \"Cardiologist\",\r\n    \"phone\": \"9876543211\",\r\n    \"email\": \"rahul@example.com\"\r\n}"
+            },
+            "url": {
+              "raw": "{{server}}/api/doctors/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "doctors",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete_doctor",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{Doctors Token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Dr. Rahul Sharma\",\r\n    \"specialization\": \"Cardiologist\",\r\n    \"phone\": \"9876543211\",\r\n    \"email\": \"rahul@example.com\"\r\n}"
+            },
+            "url": {
+              "raw": "{{server}}/api/doctors/2/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "doctors",
+                "2",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "mappings",
+      "item": [
+        {
+          "name": "list_mappings",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "json_web_token_0wg3",
+      "secret": true
+    },
+    {
+      "key": "Doctors Token",
+      "secret": true
+    }
+  ]
+}
